@@ -156,7 +156,7 @@ def vercel_deploy():
     payload = json.dumps({
         "name": "ashfall-vfx-forge",
         "gitSource": {"type": "github", "repoId": repo_id, "ref": "main"},
-        "projectSettings": {"framework": None}
+        "target": "production", "projectSettings": {"framework": None}
     }).encode()
     req = urllib.request.Request(
         "https://api.vercel.com/v13/deployments",
