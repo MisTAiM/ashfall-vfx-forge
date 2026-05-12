@@ -118,6 +118,8 @@ const fireAttack=type=>{
   if(fxR.current?.includes('cb_dmg_num')){const c=cfgR.current;const dmg=Math.floor(Math.random()*(c.atkDmgMax-c.atkDmgMin)+c.atkDmgMin);const isCrit=type==='atk_crit';pts.current.push(new Pt((Math.random()-.5)*40,-30,{spd:2,angle:270,spread:30,life:1.5,sz:isCrit?6:4,col:isCrit?'#ffff00':c.atkColor,g:0,dr:1,sh:false,tp:'circle',fs:.4,text:isCrit?dmg*2+'!':''+dmg,font:isCrit?'bold 28px Rajdhani,sans-serif':'bold 18px Rajdhani,sans-serif'}))}
 };
 
+const fireBurst=()=>{const cc=cfgR.current;if(!cc||!cvRef.current)return;const rect=cvRef.current.getBoundingClientRect();const eox2=(cc.emX-.5)*rect.width,eoy2=(cc.emY-.5)*rect.height;for(let i=0;i<20*cc.pAmount;i++){const a=Math.random()*Math.PI*2,r=Math.random()*cc.pSpawnR;pts.current.push(new Pt(eox2+Math.cos(a)*r,eoy2+Math.sin(a)*r,{angle:cc.pAngle,spread:cc.pSpread,spd:cc.pSpdMin+Math.random()*(cc.pSpdMax-cc.pSpdMin),spdMul:cc.pSpeed*cc.intensity,life:cc.pLife,sz:cc.pSize,col:cc.partCol,g:cc.pGrav,gDir:cc.pGravDir,tp:cc.pShape,blur:cc.pBlur,glow:cc.pGlow,trail:cc.pTrail,colEnd:cc.pColEnd,fs:cc.pFade,turb:cc.pTurb,comp:cc.pComp,dr:cc.pDrag,sizeVar:cc.pSizeVar,opacity:cc.pOpacity,stretch:cc.pStretch,flicker:cc.pFlicker,bounce:cc.pBounce,rotSpd:cc.pRotSpd,distort:cc.pDistort,windX:cc.pWindX,windY:cc.pWindY,attract:cc.pAttract,pulse:cc.pPulse,szMin:cc.pSizeMin,szMax:cc.pSizeMax,spdMin:cc.pSpdMin,spdMax:cc.pSpdMax,colRand:cc.pColRand,emOx:eox2,emOy:eoy2,shrinkFlag:cc.pShrink}))}};
+
 // RENDER — zero React deps, reads refs only
 const render=useCallback(ts=>{
   const cv=cvRef.current;if(!cv){raf.current=requestAnimationFrame(render);return}
@@ -310,7 +312,7 @@ return(<div style={{height:'100vh',display:'flex',flexDirection:'column'}}>
 <div style={{display:'flex',gap:3,flexWrap:'wrap'}}>
 <button className="ab" onClick={()=>setFx([])}>Clear</button>
 <button className="ab" onClick={()=>setFx(allFx.map(f=>f.id))}>All</button>
-<button className="ab" onClick={()=>{const cc=cfgR.current,eox2=(cc.emX-.5)*cvRef.current.getBoundingClientRect().width,eoy2=(cc.emY-.5)*cvRef.current.getBoundingClientRect().height;for(let i=0;i<20*cc.pAmount;i++){const a=Math.random()*Math.PI*2,r=Math.random()*cc.pSpawnR;pts.current.push(new Pt(eox2+Math.cos(a)*r,eoy2+Math.sin(a)*r,{angle:cc.pAngle,spread:cc.pSpread,spd:cc.pSpdMin+Math.random()*(cc.pSpdMax-cc.pSpdMin),spdMul:cc.pSpeed*cc.intensity,life:cc.pLife,sz:cc.pSize,col:cc.partCol,g:cc.pGrav,gDir:cc.pGravDir,tp:cc.pShape,blur:cc.pBlur,glow:cc.pGlow,trail:cc.pTrail,colEnd:cc.pColEnd,fs:cc.pFade,turb:cc.pTurb,comp:cc.pComp,dr:cc.pDrag,sizeVar:cc.pSizeVar,opacity:cc.pOpacity,stretch:cc.pStretch,flicker:cc.pFlicker,bounce:cc.pBounce,rotSpd:cc.pRotSpd,distort:cc.pDistort,windX:cc.pWindX,windY:cc.pWindY,attract:cc.pAttract,pulse:cc.pPulse,szMin:cc.pSizeMin,szMax:cc.pSizeMax,spdMin:cc.pSpdMin,spdMax:cc.pSpdMax,colRand:cc.pColRand,emOx:eox2,emOy:eoy2,shrinkFlag:cc.pShrink}))}}>Burst</button>
+<button className="ab" onClick={fireBurst}>Burst</button>
 <button className="ab" onClick={()=>{pts.current=[]}}>Kill P</button>
 <button className="ab" onClick={()=>setCfg(p=>({...p,intensity:1,speed:1,vfxScale:1,partCol:'#ff6b35',auraCol:'#ff6b35',bg:'#0f0509',pShape:'circle',pAngle:270,pSpread:120,pBlur:0,pSize:3,pLife:1.5,pSpeed:1,emX:.5,emY:.5}))}>Reset</button>
 </div>
