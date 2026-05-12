@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ashfall VFX Forge — Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080306;--bg2:#10070b;--bg3:#1a0c12;--acc:#ff6b35;--acc2:#ff8c42;--txt:#d4c8c0;--txt2:#998880;--txt3:#665550;--bdr:rgba(255,107,53,0.12);--font-head:'Rajdhani',sans-serif;--font-mono:'Share Tech Mono',monospace}
+body{background:var(--bg);color:var(--txt);font-family:var(--font-mono);font-size:13px;line-height:1.7}
+a{color:var(--acc);text-decoration:none}a:hover{color:var(--acc2);text-decoration:underline}
+
+.wiki{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+.wiki-header{text-align:center;margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--bdr)}
+.wiki-title{font-family:var(--font-head);font-size:36px;font-weight:700;letter-spacing:3px;background:linear-gradient(135deg,#ff4500,#ff8c42,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.wiki-sub{color:var(--txt3);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.back-link{display:inline-block;margin-bottom:24px;padding:6px 14px;border:1px solid var(--bdr);border-radius:4px;font-size:11px;color:var(--txt2);transition:all .15s}
+.back-link:hover{color:var(--acc);border-color:var(--acc);text-decoration:none}
+
+.toc{background:var(--bg2);border:1px solid var(--bdr);border-radius:6px;padding:20px 24px;margin-bottom:40px}
+.toc-title{font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--acc);margin-bottom:12px;letter-spacing:1px}
+.toc-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+.toc-list a{font-size:12px;color:var(--txt2);padding:3px 0;display:block;border-left:2px solid transparent;padding-left:10px;transition:all .12s}
+.toc-list a:hover{color:var(--acc);border-left-color:var(--acc);text-decoration:none}
+
+h2{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--acc);margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--bdr);letter-spacing:1px}
+h3{font-family:var(--font-head);font-size:16px;font-weight:600;color:var(--acc2);margin:24px 0 10px;letter-spacing:.5px}
+p{margin-bottom:12px;color:var(--txt)}
+
+.fx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin:12px 0 20px}
+.fx-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:4px;padding:10px 14px}
+.fx-card-name{font-family:var(--font-head);font-weight:700;font-size:14px;color:var(--txt);letter-spacing:.3px}
+.fx-card-id{font-size:10px;color:var(--txt3);margin-top:2px}
+.fx-card-desc{font-size:11px;color:var(--txt2);margin-top:6px;line-height:1.5}
+
+.code{background:var(--bg3);border:1px solid var(--bdr);border-radius:4px;padding:14px 16px;font-family:var(--font-mono);font-size:11px;color:var(--acc2);overflow-x:auto;margin:12px 0 20px;line-height:1.6;white-space:pre}
+.inline-code{background:var(--bg3);padding:2px 6px;border-radius:3px;font-size:11px;color:var(--acc2)}
+
+table{width:100%;border-collapse:collapse;margin:12px 0 20px}
+th{text-align:left;padding:8px 12px;background:var(--bg2);border:1px solid var(--bdr);font-family:var(--font-head);font-weight:600;color:var(--acc);font-size:12px;letter-spacing:.5px}
+td{padding:8px 12px;border:1px solid var(--bdr);font-size:11px;color:var(--txt2)}
+tr:hover td{background:rgba(255,107,53,0.03)}
+
+.tier-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.note{background:rgba(255,107,53,0.05);border-left:3px solid var(--acc);padding:12px 16px;margin:12px 0;border-radius:0 4px 4px 0;font-size:12px;color:var(--txt2)}
+.warn{border-left-color:#ff4444;background:rgba(255,68,68,0.05)}
+</style>
+</head>
+<body>
+<div class="wiki">
+<a href="index.html" class="back-link">← Back to VFX Forge</a>
+
+<div class="wiki-header">
+<div class="wiki-title">ASHFALL VFX FORGE</div>
+<div class="wiki-sub">Documentation & Integration Guide — v3.0</div>
+</div>
+
+<div class="toc">
+<div class="toc-title">Contents</div>
+<ul class="toc-list">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#particles">Particle Effects</a></li>
+<li><a href="#auras">Aura Effects</a></li>
+<li><a href="#transforms">Transform Effects</a></li>
+<li><a href="#attacks">Attack Animations</a></li>
+<li><a href="#combat">Combat VFX</a></li>
+<li><a href="#postfx">Post-Processing FX</a></li>
+<li><a href="#presets">VFX Presets</a></li>
+<li><a href="#items">Item Database</a></li>
+<li><a href="#config">Configuration Reference</a></li>
+<li><a href="#code-export">Code Export & Integration</a></li>
+<li><a href="#performance">Performance Notes</a></li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+
+<h2 id="overview">Overview</h2>
+<p>Ashfall VFX Forge is a full-scale HTML5 Canvas animation platform built for <a href="https://ashfall-idle.vercel.app" target="_blank">Ashfall Idle</a>. It provides real-time VFX preview, configuration, and code export for integrating animated item effects into the game.</p>
+<p>The platform includes 44 individual effects across 7 categories, a built-in item database matching Ashfall's OSRS-style equipment system, and a complete code generation pipeline.</p>
+
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Total Effects</td><td>44</td></tr>
+<tr><td>Particle Types</td><td>10</td></tr>
+<tr><td>Attack Animations</td><td>8</td></tr>
+<tr><td>Combat VFX</td><td>6</td></tr>
+<tr><td>VFX Presets</td><td>12</td></tr>
+<tr><td>Item Database</td><td>33 items</td></tr>
+<tr><td>Particle Cap</td><td>400</td></tr>
+<tr><td>Rendering</td><td>HTML5 Canvas, 60fps, DPR-aware</td></tr>
+</table>
+
+<h2 id="getting-started">Getting Started</h2>
+<h3>Upload an Item</h3>
+<p>Click the <span class="inline-code">Upload</span> button in the header to load any PNG/JPG item sprite. The image auto-scales to fit the canvas viewport while maintaining aspect ratio. Transparent PNGs work best — the VFX effects layer around the item's alpha channel.</p>
+
+<h3>Enable Effects</h3>
+<p>Use the left sidebar to toggle effects on/off. Click any effect row to enable it — the dot indicator shows active state. Multiple effects stack and composite together in real-time.</p>
+
+<h3>Configure</h3>
+<p>The right panel exposes all configurable parameters. Sliders and color pickers update the canvas in real-time. Context-sensitive controls appear based on which effects are active.</p>
+
+<h3>Export</h3>
+<p>Click <span class="inline-code">Code</span> to generate a JavaScript configuration object. Click <span class="inline-code">Frame</span> to download the current canvas as a PNG.</p>
+
+<h2 id="particles">Particle Effects (10)</h2>
+<p>Particle effects use a pooled engine capped at 400 active particles. Each particle has physics properties including velocity, gravity, drag, rotation, opacity fade, and size shrink.</p>
+
+<div class="fx-grid">
+<div class="fx-card"><div class="fx-card-name">Fire Embers</div><div class="fx-card-id">fire_embers</div><div class="fx-card-desc">Rising ember particles with negative gravity. Uses the Particle Color config. Default spawn: 2/frame.</div></div>
+<div class="fx-card"><div class="fx-card-name">Smoke Trail</div><div class="fx-card-id">smoke_trail</div><div class="fx-card-desc">Large semi-transparent smoke circles that rise slowly. No shrink — maintains size until fade. 1/frame.</div></div>
+<div class="fx-card"><div class="fx-card-name">Sparkle Burst</div><div class="fx-card-id">sparkle</div><div class="fx-card-desc">Star-shaped gold particles that scatter in all directions. Short lifespan (0.8s). 2/frame.</div></div>
+<div class="fx-card"><div class="fx-card-name">Ashfall</div><div class="fx-card-id">ash_fall</div><div class="fx-card-desc">Square gray particles falling from above with slight positive gravity. Mimics volcanic ash. 1/frame.</div></div>
+<div class="fx-card"><div class="fx-card-name">Magic Orbs</div><div class="fx-card-id">magic_orbs</div><div class="fx-card-desc">Purple circles that orbit the item on an elliptical path. Position overridden each frame for smooth orbit.</div></div>
+<div class="fx-card"><div class="fx-card-name">Blood Drip</div><div class="fx-card-id">blood_drip</div><div class="fx-card-desc">Diamond-shaped dark red particles falling with strong gravity. 1/frame.</div></div>
+<div class="fx-card"><div class="fx-card-name">Poison Mist</div><div class="fx-card-id">poison_mist</div><div class="fx-card-desc">Large green transparent circles rising slowly. No shrink. Long lifespan (2.5s). 2/frame.</div></div>
+<div class="fx-card"><div class="fx-card-name">Ice Shards</div><div class="fx-card-id">ice_shards</div><div class="fx-card-desc">Cyan diamond-shaped crystals scattering with slight gravity pull. 2/frame.</div></div>
+<div class="fx-card"><div class="fx-card-name">Lightning Sparks</div><div class="fx-card-id">lightning_sparks</div><div class="fx-card-desc">Fast yellow line particles with very short lifespan (0.4s). High spawn rate: 3/frame.</div></div>
+<div class="fx-card"><div class="fx-card-name">Nature Leaves</div><div class="fx-card-id">leaves</div><div class="fx-card-desc">Green diamond-shaped particles drifting down slowly. Long lifespan (3s). 1/frame.</div></div>
+</div>
+
+<h2 id="auras">Aura Effects (6)</h2>
+<p>Auras render behind the item image and use the Aura Color and Aura Radius configuration values.</p>
+
+<div class="fx-grid">
+<div class="fx-card"><div class="fx-card-name">Radial Glow</div><div class="fx-card-id">radial_glow</div><div class="fx-card-desc">3-stop radial gradient pulsing outward. Uses auraCol config.</div></div>
+<div class="fx-card"><div class="fx-card-name">Flame Aura</div><div class="fx-card-id">flame_aura</div><div class="fx-card-desc">12 flickering radial gradient points orbiting the item with sine-based flicker.</div></div>
+<div class="fx-card"><div class="fx-card-name">Frost Aura</div><div class="fx-card-id">frost_aura</div><div class="fx-card-desc">8 cyan radial points orbiting slowly, plus an outer frost haze ring.</div></div>
+<div class="fx-card"><div class="fx-card-name">Shadow Aura</div><div class="fx-card-id">shadow_aura</div><div class="fx-card-desc">6 procedural tendril paths using sine-offset bezier segments. Dark purple.</div></div>
+<div class="fx-card"><div class="fx-card-name">Lightning Aura</div><div class="fx-card-id">lightning_aura</div><div class="fx-card-desc">Randomized bolt generation with 15% per-frame chance. 8-segment jagged lines with endpoint glow.</div></div>
+<div class="fx-card"><div class="fx-card-name">Holy Aura</div><div class="fx-card-id">holy_aura</div><div class="fx-card-desc">16 golden rays rotating slowly with sine-modulated opacity and length.</div></div>
+</div>
+
+<h2 id="transforms">Transform Effects (6)</h2>
+<p>Transforms modify the canvas translation, rotation, and scale before the item is drawn. All transforms stack additively.</p>
+
+<div class="fx-grid">
+<div class="fx-card"><div class="fx-card-name">Float & Bob</div><div class="fx-card-id">float_bob</div><div class="fx-card-desc">Sine-wave vertical oscillation. Config: floatR (5-60px).</div></div>
+<div class="fx-card"><div class="fx-card-name">Rotate Spin</div><div class="fx-card-id">spin</div><div class="fx-card-desc">Continuous rotation. Config: spinSpd (0.1-5x).</div></div>
+<div class="fx-card"><div class="fx-card-name">Pulse Scale</div><div class="fx-card-id">pulse_scale</div><div class="fx-card-desc">Sine-wave scale oscillation. Config: pulseR (0.02-0.5).</div></div>
+<div class="fx-card"><div class="fx-card-name">Wobble Shake</div><div class="fx-card-id">wobble</div><div class="fx-card-desc">Horizontal + rotational sine oscillation. Config: wobbleR (2-30px).</div></div>
+<div class="fx-card"><div class="fx-card-name">Bounce Drop</div><div class="fx-card-id">bounce</div><div class="fx-card-desc">Absolute sine bounce (always upward). Config: bounceH (5-80px).</div></div>
+<div class="fx-card"><div class="fx-card-name">Orbit Path</div><div class="fx-card-id">orbit</div><div class="fx-card-desc">Elliptical translation path. Config: orbitR (20-150px).</div></div>
+</div>
+
+<h2 id="attacks">Attack Animations (8)</h2>
+<p>Attack animations are one-shot sequences triggered by clicking the FIRE button. They play over the current canvas state and auto-expire after their duration. Multiple attacks can stack.</p>
+<div class="note">Attack animations auto-enable when fired. They remain toggled on for re-firing but do not loop — each FIRE click plays a single instance.</div>
+
+<div class="fx-grid">
+<div class="fx-card"><div class="fx-card-name">Melee Slash</div><div class="fx-card-id">atk_slash — 500ms</div><div class="fx-card-desc">Sweeping arc with white trail. Adds rotational transform during playback.</div></div>
+<div class="fx-card"><div class="fx-card-name">Thrust / Stab</div><div class="fx-card-id">atk_thrust — 400ms</div><div class="fx-card-desc">Diamond-shaped projectile thrusting forward. Adds forward translation + scale.</div></div>
+<div class="fx-card"><div class="fx-card-name">Ranged Shot</div><div class="fx-card-id">atk_projectile — 700ms</div><div class="fx-card-desc">Projectile with 5-point trail + impact explosion at endpoint.</div></div>
+<div class="fx-card"><div class="fx-card-name">Magic Bolt</div><div class="fx-card-id">atk_magic — 800ms</div><div class="fx-card-desc">Sine-wave spell projectile with radial glow + detonation. Purple themed.</div></div>
+<div class="fx-card"><div class="fx-card-name">AOE Explosion</div><div class="fx-card-id">atk_aoe — 600ms</div><div class="fx-card-desc">Expanding ring blast with inner white flash. Triggers screen shake.</div></div>
+<div class="fx-card"><div class="fx-card-name">Critical Hit</div><div class="fx-card-id">atk_crit — 300ms</div><div class="fx-card-desc">Yellow screen flash + 8-point star burst + 4x rapid scale pulse. Triggers screen shake. Spawns 2x damage number.</div></div>
+<div class="fx-card"><div class="fx-card-name">Multi-Hit</div><div class="fx-card-id">atk_multi — 900ms</div><div class="fx-card-desc">6 rapid impact rings in random positions. Adds rapid translation + rotation jitter.</div></div>
+<div class="fx-card"><div class="fx-card-name">Special Attack</div><div class="fx-card-id">atk_special — 1200ms</div><div class="fx-card-desc">3-phase animation: Charge (golden radial buildup) → Release (expanding double ring) → Aftermath (12-ray dissipation). Full rotation. Triggers screen shake.</div></div>
+</div>
+
+<h2 id="combat">Combat VFX (6)</h2>
+<p>Combat VFX are persistent effects that provide visual feedback for combat states. Unlike attacks, these stay active as long as toggled on.</p>
+
+<div class="fx-grid">
+<div class="fx-card"><div class="fx-card-name">Damage Numbers</div><div class="fx-card-id">cb_dmg_num</div><div class="fx-card-desc">Spawns floating damage text when attacks fire. Uses atkDmgMin/Max config. Crits show 2x value in yellow.</div></div>
+<div class="fx-card"><div class="fx-card-name">Hit Impact</div><div class="fx-card-id">cb_impact</div><div class="fx-card-desc">White screen flash synced to active attack progress (60-90% mark).</div></div>
+<div class="fx-card"><div class="fx-card-name">Heal Pulse</div><div class="fx-card-id">cb_heal</div><div class="fx-card-desc">Green radial glow behind item + rising star particles (30% spawn chance/frame).</div></div>
+<div class="fx-card"><div class="fx-card-name">Buff Applied</div><div class="fx-card-id">cb_buff</div><div class="fx-card-desc">Blue rotating dashed arc ring around item. Sine-modulated opacity.</div></div>
+<div class="fx-card"><div class="fx-card-name">Debuff Curse</div><div class="fx-card-id">cb_debuff</div><div class="fx-card-desc">Purple radial vignette overlay with pulsing opacity.</div></div>
+<div class="fx-card"><div class="fx-card-name">Block / Parry</div><div class="fx-card-id">cb_block</div><div class="fx-card-desc">Cyan arc shield flash synced to melee attack animations (30-70% progress).</div></div>
+</div>
+
+<h2 id="postfx">Post-Processing FX (6)</h2>
+<p>Post-FX render in screen space after all item and particle drawing is complete.</p>
+
+<div class="fx-grid">
+<div class="fx-card"><div class="fx-card-name">Bloom Glow</div><div class="fx-card-id">bloom</div><div class="fx-card-desc">Pre-pass blur + brightness multiply behind the item. Config: bloomStr (0.1-1.5).</div></div>
+<div class="fx-card"><div class="fx-card-name">Chromatic Aberration</div><div class="fx-card-id">chromatic</div><div class="fx-card-desc">RGB channel split using hue-rotate + screen blend mode. Config: chromOff (1-12px).</div></div>
+<div class="fx-card"><div class="fx-card-name">Scanlines</div><div class="fx-card-id">scanlines</div><div class="fx-card-desc">Horizontal 1px black lines at regular intervals. Config: scanGap (2-8px).</div></div>
+<div class="fx-card"><div class="fx-card-name">Vignette</div><div class="fx-card-id">vignette</div><div class="fx-card-desc">Radial gradient darkening at canvas edges. Config: vigStr (0.1-0.8).</div></div>
+<div class="fx-card"><div class="fx-card-name">Color Grade</div><div class="fx-card-id">color_grade</div><div class="fx-card-desc">CSS filter-based hue/saturation/brightness on item image. Config: hue (0-360°), sat (0-300%), bright (20-200%).</div></div>
+<div class="fx-card"><div class="fx-card-name">Screen Shake</div><div class="fx-card-id">screen_shake</div><div class="fx-card-desc">Randomized xy offset with exponential decay. Auto-triggered by crit/aoe/special attacks. Config: shakeStr (1-20).</div></div>
+</div>
+
+<h2 id="presets">VFX Presets (12)</h2>
+<p>One-click effect combinations. Clicking a preset replaces all active effects with the preset's effect list.</p>
+
+<table>
+<tr><th>Preset</th><th>Tier</th><th>Effects</th></tr>
+<tr><td>Legendary Drop</td><td><span class="tier-dot" style="background:#f59e0b"></span>Legendary</td><td>fire_embers + radial_glow + pulse_scale + bloom</td></tr>
+<tr><td>Volcanic Fury</td><td><span class="tier-dot" style="background:#f59e0b"></span>Legendary</td><td>fire_embers + flame_aura + atk_aoe + bloom + screen_shake</td></tr>
+<tr><td>Frozen Relic</td><td><span class="tier-dot" style="background:#a855f7"></span>Epic</td><td>ice_shards + frost_aura + float_bob + bloom</td></tr>
+<tr><td>Shadow Blade</td><td><span class="tier-dot" style="background:#a855f7"></span>Epic</td><td>shadow_aura + smoke_trail + wobble + atk_slash</td></tr>
+<tr><td>Holy Artifact</td><td><span class="tier-dot" style="background:#f59e0b"></span>Legendary</td><td>holy_aura + sparkle + pulse_scale + bloom + cb_heal</td></tr>
+<tr><td>Blood Ritual</td><td><span class="tier-dot" style="background:#3b82f6"></span>Rare</td><td>blood_drip + shadow_aura + pulse_scale + cb_debuff</td></tr>
+<tr><td>Storm Caller</td><td><span class="tier-dot" style="background:#a855f7"></span>Epic</td><td>lightning_aura + lightning_sparks + atk_magic + chromatic</td></tr>
+<tr><td>Ashfall Cape</td><td><span class="tier-dot" style="background:#f59e0b"></span>Legendary</td><td>ash_fall + flame_aura + float_bob</td></tr>
+<tr><td>Poison Dagger</td><td><span class="tier-dot" style="background:#3b82f6"></span>Rare</td><td>poison_mist + atk_thrust + cb_dmg_num</td></tr>
+<tr><td>Nature Staff</td><td><span class="tier-dot" style="background:#a855f7"></span>Epic</td><td>leaves + holy_aura + atk_magic + float_bob</td></tr>
+<tr><td>Boss Entrance</td><td><span class="tier-dot" style="background:#f59e0b"></span>Legendary</td><td>atk_aoe + screen_shake + fire_embers + flame_aura + bloom + chromatic</td></tr>
+<tr><td>Crit Combo</td><td><span class="tier-dot" style="background:#f59e0b"></span>Legendary</td><td>atk_multi + atk_crit + cb_dmg_num + cb_impact + screen_shake</td></tr>
+</table>
+
+<h2 id="items">Item Database</h2>
+<p>33 items across 5 categories matching Ashfall Idle's OSRS-style equipment system. Items include tier classification (Common → Legendary) and elemental affinity.</p>
+
+<h3>Equipment Slots</h3>
+<p>mainhand, offhand, 2h, head, body, legs, feet, hands, cape, ring, neck, potion, pet</p>
+
+<h3>Elements</h3>
+<p>fire, magma, smoke, void, holy, ice, lightning, poison, shadow, blood, arcane, nature</p>
+
+<h2 id="config">Configuration Reference</h2>
+
+<table>
+<tr><th>Key</th><th>Range</th><th>Default</th><th>Description</th></tr>
+<tr><td>intensity</td><td>0.1 – 3.0</td><td>1.0</td><td>Global effect magnitude multiplier</td></tr>
+<tr><td>speed</td><td>0.1 – 4.0</td><td>1.0</td><td>Animation speed multiplier</td></tr>
+<tr><td>scale</td><td>0.3 – 2.5</td><td>1.0</td><td>Item scale factor</td></tr>
+<tr><td>glowCol</td><td>hex</td><td>#ff6b35</td><td>Glow color</td></tr>
+<tr><td>partCol</td><td>hex</td><td>#ff6b35</td><td>Particle color (fire embers)</td></tr>
+<tr><td>auraCol</td><td>hex</td><td>#ff6b35</td><td>Aura color (radial glow)</td></tr>
+<tr><td>auraSz</td><td>10 – 80</td><td>30</td><td>Aura radius in pixels</td></tr>
+<tr><td>bloomStr</td><td>0.1 – 1.5</td><td>0.6</td><td>Bloom intensity</td></tr>
+<tr><td>chromOff</td><td>1 – 12</td><td>3</td><td>Chromatic aberration offset (px)</td></tr>
+<tr><td>scanGap</td><td>2 – 8</td><td>4</td><td>Scanline spacing (px)</td></tr>
+<tr><td>vigStr</td><td>0.1 – 0.8</td><td>0.4</td><td>Vignette darkness</td></tr>
+<tr><td>atkColor</td><td>hex</td><td>#ff4444</td><td>Attack effect color</td></tr>
+<tr><td>healColor</td><td>hex</td><td>#44ff44</td><td>Heal effect color</td></tr>
+<tr><td>atkDmgMin</td><td>1 – 100</td><td>10</td><td>Minimum damage number</td></tr>
+<tr><td>atkDmgMax</td><td>1 – 999</td><td>50</td><td>Maximum damage number</td></tr>
+<tr><td>shakeStr</td><td>1 – 20</td><td>8</td><td>Screen shake initial amplitude</td></tr>
+</table>
+
+<h2 id="code-export">Code Export & Integration</h2>
+<p>The Code panel generates a JavaScript config object containing all active effects and their parameters. Example output:</p>
+
+<div class="code">// ASHFALL IDLE — VFX: Volcanic Cape
+// Generated by VFX Forge v3.0
+const VOLCANIC_CAPE_VFX = {
+  item: 'a2',
+  effects: ["fire_embers","flame_aura","float_bob","bloom"],
+  config: {
+    intensity: 1.2,
+    speed: 0.8,
+    scale: 1,
+    glowCol: "#ff6b35",
+    partCol: "#ff4500",
+    auraCol: "#ff6b35",
+    ...
+  }
+};
+
+// Usage: applyVFX(canvas, img, VOLCANIC_CAPE_VFX);</div>
+
+<div class="note">The exported config is designed to be consumed by your game's item render pipeline. Implement an <span class="inline-code">applyVFX()</span> function that reads the config and applies the corresponding canvas operations during your game's render loop.</div>
+
+<h2 id="performance">Performance Notes</h2>
+<p>The render loop uses <span class="inline-code">requestAnimationFrame</span> with ref-based state access to avoid React re-render overhead. Key optimizations:</p>
+<p>Particle pool capped at 400. DPR-aware canvas sizing with <span class="inline-code">setTransform</span> reset every frame. No pixel-level manipulation (distortion effect removed for performance). Screen shake uses exponential decay (0.88 multiplier) instead of linear.</p>
+<div class="note warn">Enabling all 44 effects simultaneously is supported but not recommended for production. Use the Kill Particles button if the canvas becomes saturated.</div>
+
+<h2 id="changelog">Changelog</h2>
+<h3>v3.0</h3>
+<p>Complete rebuild. All emojis replaced with SVG icons. Full CSS overhaul with Rajdhani/Share Tech Mono typography. Added 8 attack animations, 6 combat VFX, 4 new particle types, screen shake system. Fixed particle memory leak, DPR scaling, render callback churn, magic orbs O(n²), filter bleed, hex alpha concatenation. Wiki documentation added.</p>
+<h3>v2.0</h3>
+<p>Initial release with 24 effects, particle engine, code export.</p>
+<h3>v1.0</h3>
+<p>Prototype with 8 animations and basic canvas rendering.</p>
+
+<div style="margin-top:60px;padding-top:20px;border-top:1px solid var(--bdr);text-align:center;color:var(--txt3);font-size:10px">
+ASHFALL VFX FORGE v3.0 — <a href="https://ashfall-idle.vercel.app" target="_blank">ashfall-idle.vercel.app</a><br/>
+Built for Ashfall Idle by Morpheus
+</div>
+</div>
+</body>
+</html>
